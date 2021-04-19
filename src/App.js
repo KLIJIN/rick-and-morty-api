@@ -5,7 +5,6 @@ import HomePage from "./Pages/HompePage.js"
 import SingleEpisodePage from "./Pages/SingleEpisodePage"
 
 const App = () => {
-
   return (
     <Router>
       <Switch>
