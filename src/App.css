@@ -246,3 +246,6 @@ Story
   text-transform: capitalize;
   font-size: 0.85rem;
 }
+.episode {
+  margin-bottom: 1.5rem;
+}

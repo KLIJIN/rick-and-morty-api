@@ -15,7 +15,7 @@ const Stories = () => {
   }
 
   return (
-    <section className="section"  >
+    <section className="section" >
       {stories.map((item) => {
         const { id, name, air_date, episode } = item;
         const date = new Date(air_date);
@@ -25,7 +25,7 @@ const Stories = () => {
         month = month < 10 ? (month = `0${month}`) : month;
         let year = date.getFullYear();
         return (
-          <div key={id}>
+          <div key={id} className="episode"   >
             <h3> {name} </h3>
             <div> Сезон: {+`${episode.slice(1, 3)}`} </div>
             <div> Серия: {+`${episode.slice(4, 6)}`} </div>
