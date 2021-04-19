@@ -12,7 +12,6 @@ const App = () => {
         <Route exact path="/"> <HomePage />  </Route>
         <Route exact path="/episodes/:id" children={<SingleEpisodePage />} />
       </Switch>
-      <Route exact path="/rick-and-morty-api/"> <HomePage />  </Route>
     </Router>
   )
 }
