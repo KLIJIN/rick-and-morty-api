@@ -2,7 +2,7 @@
   "name": "rick-morty2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://KLIJIN.github.io/rick-and-morty-api/",
+  "homepage": "http://KLIJIN.github.io/rick-and-morty-api",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",

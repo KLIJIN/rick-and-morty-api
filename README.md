@@ -2,4 +2,4 @@
 
 Стейт менеджмент реализован на хуках **useContext, useReducer** и кастомных хуках **useEpisodesContext, useFilterContext** как альтернатива useContext
 
-<!-- Ссылка [GitHub Pages](https://klijin.github.io/rick-and-morty-api/). -->
+Ссылка [GitHub Pages](https://klijin.github.io/rick-and-morty-api/).

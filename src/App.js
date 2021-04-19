@@ -4,6 +4,7 @@ import './App.css'
 import HomePage from "./Pages/HompePage.js"
 import SingleEpisodePage from "./Pages/SingleEpisodePage"
 
+
 const App = () => {
   return (
     <Router>
@@ -11,6 +12,7 @@ const App = () => {
         <Route exact path="/"> <HomePage />  </Route>
         <Route exact path="/episodes/:id" children={<SingleEpisodePage />} />
       </Switch>
+      <Route exact path="/rick-and-morty-api/"> <HomePage />  </Route>
     </Router>
   )
 }
