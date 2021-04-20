@@ -6,10 +6,14 @@ export const HANDLE_SEARCH = 'HANDLE_SEARCH'
 export const GET_SINGLE_STORY_BEGIN = 'GET_SINGLE_STORY_BEGIN'
 export const GET_SINGLE_STORY_SUCCESS = 'GET_SINGLE_STORY_SUCCESS'
 export const GET_SINGLE_STORY_ERROR = 'GET_SINGLE_STORY_ERROR'
+export const GET_SINGLE_STORY_CHARS = 'GET_SINGLE_STORY_CHARS'
 export const LOAD_STORIES = 'LOAD_STORIES'
 export const UPDATE_FILTERS = 'UPDATE_FILTERS'
 export const FILTER_STORIES = 'FILTER_STORIES'
 export const CLEAR_FILTERS = 'CLEAR_FILTERS'
+
+
+
 
 
 export const setLoadingAction = () => {
@@ -91,3 +95,12 @@ export const GetSingleStoryErrorAct = () => {
     { type: GET_SINGLE_STORY_ERROR }
   )
 }
+
+
+export const GetSingleStoryCharsAct = (value) => {
+  return {
+    type: GET_SINGLE_STORY_CHARS,
+    payload: value
+  }
+}
+

@@ -4,7 +4,8 @@ import {
   useParams
   // , useHistory 
 } from 'react-router-dom'
-import { useEpisodesContext } from '../state/context/episodes_context'
+//import { useEpisodesContext } from '../state/context/episodes_context'
+import { useFilterContext } from '../state/context/filter_context'
 
 function SingleEpisodePage() {
   const url = 'https://rickandmortyapi.com/api/episode/'
@@ -13,7 +14,7 @@ function SingleEpisodePage() {
 
   // console.log("SingleEpisodePage", id, history);
 
-  const { single_story_loading: loading, single_story: story, fetchSingleStory, } = useEpisodesContext() //достаем из контекста часть initialState
+  const { single_story_loading: loading, single_story: story, fetchSingleStory } = useFilterContext() //достаем из контекста часть initialState
   const { air_date,
     //  characters, 
     episode, name } = story

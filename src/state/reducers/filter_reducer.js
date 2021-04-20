@@ -1,4 +1,7 @@
-import { LOAD_STORIES, UPDATE_FILTERS, FILTER_STORIES, CLEAR_FILTERS, } from '../actions'
+import {
+  LOAD_STORIES, UPDATE_FILTERS, FILTER_STORIES, CLEAR_FILTERS,
+  GET_SINGLE_STORY_BEGIN, GET_SINGLE_STORY_SUCCESS, GET_SINGLE_STORY_ERROR, GET_SINGLE_STORY_CHARS
+} from '../actions'
 
 const filter_reducer = (state, action) => {
   // debugger;
@@ -31,6 +34,27 @@ const filter_reducer = (state, action) => {
         ...state,
         filters: { ...state.filters, text: '' }
       }
+    //-------------------------------------------------------------------------------------
+    case GET_SINGLE_STORY_BEGIN:
+      return { ...state, single_story_loading: true, single_story_error: false, };
+    case GET_SINGLE_STORY_SUCCESS:
+      // debugger;
+      return {
+        ...state,
+        single_story_loading: false,
+        single_story: action.payload,
+      }
+    case GET_SINGLE_STORY_ERROR:
+      return { ...state, single_story_loading: false, single_story_error: true, };
+    //-------------------------------------------------------------------------------------
+    case GET_SINGLE_STORY_CHARS:
+
+      return {
+        ...state,
+        single_story: { ...state.single_story, chars: action.payload }
+      }
+
+
     default:
       return state;
   }

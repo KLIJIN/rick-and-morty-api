@@ -1,6 +1,5 @@
 import {
-  SET_LOADING, SET_STORIES, REMOVE_STORY, HANDLE_PAGE, HANDLE_SEARCH, GET_SINGLE_STORY_BEGIN,
-  GET_SINGLE_STORY_SUCCESS, GET_SINGLE_STORY_ERROR
+  SET_LOADING, SET_STORIES, REMOVE_STORY, HANDLE_PAGE, HANDLE_SEARCH,
 
 } from '../actions.js'
 
@@ -58,21 +57,9 @@ const reducer = (state = initialState, action) => {
         }
         return { ...state, page: prevPage }
       }
-
-    //-----------------------------------
-    case GET_SINGLE_STORY_BEGIN:
-      return { ...state, single_story_loading: true, single_story_error: false, };
-    case GET_SINGLE_STORY_SUCCESS:
-      // debugger;
-      return {
-        ...state,
-        single_story_loading: false,
-        single_story: action.payload,
-      }
-    case GET_SINGLE_STORY_ERROR:
-      return { ...state, single_story_loading: false, single_story_error: true, };
-    //-----------------------------------
+      return { ...state };
+    default:
+      return state;
   }
-
 }
 export default reducer

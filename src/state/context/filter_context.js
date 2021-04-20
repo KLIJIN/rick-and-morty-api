@@ -4,6 +4,7 @@ import {
   updateFiltersAction, //обновляем Filter Provider filters: text
   filterStoriesAction,
   // clearFiltersAction,
+  GetSingleStoryBeginAct, GetSingleStorySuccessAct, GetSingleStoryErrorAct, GetSingleStoryCharsAct
 } from '../actions'
 
 import reducer from '../reducers/filter_reducer'
@@ -26,6 +27,9 @@ const initialState = {
   filters: {
     text: getLocalStorage(),
   },
+  single_story_loading: false,
+  single_story_error: false,
+  single_story: {}
 }
 
 
@@ -54,8 +58,33 @@ export const FilterProvider = ({ children }) => {
   //   dispatch(clearFiltersAction()); //CLEAR_FILTERS
   // }
 
+  const fetchSingleStory = async (url) => { //загружает отдельный эпизод
+    dispatch(GetSingleStoryBeginAct())
+    try {
+      const response = await fetch(`${url}`);
+      const data = await response.json();
+      console.log("EpisodesProvider SINGLE STORY-->", data);
+      dispatch(GetSingleStorySuccessAct(data))
+      const chars = await Promise.all(data.characters.map(item => fetchChar(item)))
+      console.log("EpisodesProvider SINGLE STORY-->", chars);
+      dispatch(GetSingleStoryCharsAct(chars));
+    } catch (error) {
+      dispatch(GetSingleStoryErrorAct())
+    }
+  }
+
+  const fetchChar = async (url) => {  //загружаем список персонажей из отдельного эпизода
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <FilterContext.Provider value={{ ...state, updateFilters }}>
+    <FilterContext.Provider value={{ ...state, updateFilters, fetchSingleStory, fetchChar }}>
       {children}
     </FilterContext.Provider>
   )

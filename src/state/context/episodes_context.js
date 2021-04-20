@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer, createContext } from 'react'
 import {
   setLoadingAction, setStoriesAction, removeStoryAction, handlePageAction,
-  GetSingleStoryBeginAct, GetSingleStorySuccessAct, GetSingleStoryErrorAct
+
 } from '../actions.js'
 import EpisodesReducer from '../reducers/episodes_reducer'
 
@@ -15,9 +15,6 @@ const initialState = {
   nextPage: null,
   prevPage: null,
   nbPages: 0,
-  single_story_loading: false,
-  single_story_error: false,
-  single_story: {}
 }
 
 const EpisodesContext = createContext()
@@ -41,14 +38,12 @@ const EpisodesProvider = ({ children }) => {
         nextPage: data.info.next,
         prevPage: data.info.prev,
       }))
-
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-
     fetchStories(url, currentPage);
   }, [state.page]);
 
@@ -61,26 +56,8 @@ const EpisodesProvider = ({ children }) => {
   }
 
 
-
-  //загружает отдельный эпизод
-  const fetchSingleStory = async (url) => {
-
-    dispatch(GetSingleStoryBeginAct())
-    try {
-      const response = await fetch(`${url}`);
-      const data = await response.json();
-      console.log("EpisodesProvider SINGLE STORY-->", data);
-      dispatch(GetSingleStorySuccessAct(data))
-      dispatch(setStoriesAction({ hits: data.results, nbPages: data.info.pages }))
-    } catch (error) {
-      dispatch(GetSingleStoryErrorAct())
-    }
-  }
-
-
   return (
-
-    <EpisodesContext.Provider value={{ ...state, removeStory, handlePage, fetchSingleStory }}>
+    <EpisodesContext.Provider value={{ ...state, removeStory, handlePage, }}>
       {children}
     </EpisodesContext.Provider>
   )
