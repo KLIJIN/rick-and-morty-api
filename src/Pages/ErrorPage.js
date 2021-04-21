@@ -4,13 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 const Error = () => {
-
-
   let style = { marginTop: "50px" }
-  let styleText = {
-    marginTop: "30px",
-    textTransform: "none"
-  }
 
   return (
     <section className="error-page section">

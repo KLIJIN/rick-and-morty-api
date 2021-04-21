@@ -6,7 +6,6 @@ import Buttons from "../Components/Buttons"
 
 
 const HomePage = () => {
-  // console.log("HomePage")
   return (
     <div>
       <SearchForm />

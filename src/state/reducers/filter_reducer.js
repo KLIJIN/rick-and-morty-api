@@ -1,17 +1,16 @@
 import {
-  LOAD_STORIES, UPDATE_FILTERS, FILTER_STORIES, CLEAR_FILTERS,
+  LOAD_STORIES, UPDATE_FILTERS, FILTER_STORIES,
   GET_SINGLE_STORY_BEGIN, GET_SINGLE_STORY_SUCCESS, GET_SINGLE_STORY_ERROR, GET_SINGLE_STORY_CHARS
 } from '../actions'
 
 const filter_reducer = (state, action) => {
-  // debugger;
   let tempStories = []
   switch (action.type) {
     //-------------------------------------------------------------------------------------
     case LOAD_STORIES:
       return {
         ...state,
-        all_stories: [...action.payload],  //редьюсер возвращает стейт, а в all_stories кладет hits из верхнего контекста
+        all_stories: [...action.payload],
         filtered_stories: [...action.payload],
         filters: { ...state.filters }
       };
@@ -28,17 +27,9 @@ const filter_reducer = (state, action) => {
       tempStories = tempStories.filter((story) => story.name.toLowerCase().indexOf(text.toLowerCase()) >= 0)
       return { ...state, filtered_stories: tempStories }
     //============//=====FILTER_STORIES=====//==============================================
-    case CLEAR_FILTERS:
-      console.log("filter_reducer CLEAR_FILTERS")
-      return {
-        ...state,
-        filters: { ...state.filters, text: '' }
-      }
-    //-------------------------------------------------------------------------------------
     case GET_SINGLE_STORY_BEGIN:
       return { ...state, single_story_loading: true, single_story_error: false, };
     case GET_SINGLE_STORY_SUCCESS:
-      // debugger;
       return {
         ...state,
         single_story_loading: false,
@@ -48,12 +39,10 @@ const filter_reducer = (state, action) => {
       return { ...state, single_story_loading: false, single_story_error: true, };
     //-------------------------------------------------------------------------------------
     case GET_SINGLE_STORY_CHARS:
-
       return {
         ...state,
         single_story: { ...state.single_story, chars: action.payload }
       }
-
 
     default:
       return state;

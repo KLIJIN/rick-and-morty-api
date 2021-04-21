@@ -19,7 +19,6 @@ Variables
   --clr-grey-3: hsl(210, 22%, 49%);
   --clr-grey-4: hsl(210, 31%, 80%);
   --clr-grey-5: hsl(210, 36%, 96%);
-  --clr-white: #fff;
   --clr-red-dark: hsl(360, 67%, 44%);
 
   --radius: 0.25rem;
@@ -144,13 +143,16 @@ article {
 }
 
 .btn-primary {
-  background: var(--primaryColor);
+  background: var(--clr-primary);
   color: var(--mainWhite);
   border-color: transparent;
+  font-weight: bold;
+  background: var(--clr-primary);
+  border-radius: var(--radius);
+  cursor: pointer;
 }
 .btn-primary:hover {
-  background: var(--primaryLightColor);
-  color: var(--primaryColor);
+  background: var(--clr-grey-3);
 }
 
 /*
@@ -205,7 +207,7 @@ Buttons Component
   border-color: transparent;
   background: var(--clr-primary);
   border-radius: var(--radius);
-  color: var(--clr-white); /* */
+  color: var(--mainWhite); /* */
   cursor: pointer;
 }
 .btn-container button:disabled {
@@ -257,7 +259,7 @@ Story
   }
 }
 .story {
-  background: var(--clr-white);
+  background: var(--mainWhite);
   border-radius: var(--radius);
   padding: 1rem 2rem;
 }
@@ -380,7 +382,7 @@ Error Page
   flex-wrap: wrap;
 }
 
-.col-6 {
+.CharacterCard {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   flex-basis: 50%;
@@ -389,7 +391,7 @@ Error Page
 }
 
 @media screen and (min-width: 600px) {
-  .col-md-3 {
+  .CharacterCard {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     flex-basis: 50%;

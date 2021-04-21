@@ -1,13 +1,10 @@
 
-import React
-  // , { useContext } 
-  from 'react'
+import React from 'react'
 import { useFilterContext } from '../state/context/filter_context'
 import { Link } from 'react-router-dom'
 
 
 const Stories = () => {
-  // console.log("Stories")
   const { filtered_stories: stories } = useFilterContext();
 
   if (stories?.length < 1) {

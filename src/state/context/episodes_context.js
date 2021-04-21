@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useReducer, createContext } from 'react'
-import {
-  setLoadingAction, setStoriesAction, removeStoryAction, handlePageAction,
-
-} from '../actions.js'
+import { setLoadingAction, setStoriesAction, removeStoryAction, handlePageAction, } from '../actions.js'
 import EpisodesReducer from '../reducers/episodes_reducer'
-
-
 
 
 const initialState = {
@@ -20,7 +15,6 @@ const initialState = {
 const EpisodesContext = createContext()
 
 const EpisodesProvider = ({ children }) => {
-
   const [state, dispatch] = useReducer(EpisodesReducer, initialState);
 
   const url = "https://rickandmortyapi.com/api/episode?page=";
@@ -31,7 +25,6 @@ const EpisodesProvider = ({ children }) => {
     try {
       const response = await fetch(`${url}${currentPage}`);
       const data = await response.json();
-      // console.log("EpisodesProvider_fetchStories come data from API-->", data);
       dispatch(setStoriesAction({
         hits: data.results,
         nbPages: data.info.pages,

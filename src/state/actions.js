@@ -10,10 +10,6 @@ export const GET_SINGLE_STORY_CHARS = 'GET_SINGLE_STORY_CHARS'
 export const LOAD_STORIES = 'LOAD_STORIES'
 export const UPDATE_FILTERS = 'UPDATE_FILTERS'
 export const FILTER_STORIES = 'FILTER_STORIES'
-export const CLEAR_FILTERS = 'CLEAR_FILTERS'
-
-
-
 
 
 export const setLoadingAction = () => {
