@@ -63,10 +63,10 @@ export const FilterProvider = ({ children }) => {
     try {
       const response = await fetch(`${url}`);
       const data = await response.json();
-      console.log("EpisodesProvider SINGLE STORY-->", data);
+      // console.log("EpisodesProvider SINGLE STORY-->", data);
       dispatch(GetSingleStorySuccessAct(data))
       const chars = await Promise.all(data.characters.map(item => fetchChar(item)))
-      console.log("EpisodesProvider SINGLE STORY-->", chars);
+      // console.log("EpisodesProvider SINGLE STORY-->", chars);
       dispatch(GetSingleStoryCharsAct(chars));
     } catch (error) {
       dispatch(GetSingleStoryErrorAct())

@@ -8,12 +8,12 @@ const SearchForm = () => {
 
   return (
     <form className='search-form' onSubmit={(e) => e.preventDefault()}     >
-      <h2>search story</h2>
+      {/* <h2>search story</h2> */}
       <input
         type='text'
         name="text"
         className='form-input'
-        placeholder="поиск по названию эпизода"
+        placeholder="search story"
         value={text}
         onChange={updateFilters}   // меняем стейт FilterProvider - filteres.text
       />

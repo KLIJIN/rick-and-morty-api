@@ -17,7 +17,7 @@ function SingleEpisodePage() {
   const { single_story_loading: loading, single_story: story, fetchSingleStory } = useFilterContext() //достаем из контекста часть initialState
   const { air_date,
     //  characters, 
-    episode, name } = story
+    episode, name, chars } = story
 
   // console.log("SingleEpisodePage", air_date, characters, episode, name);
 
@@ -44,19 +44,38 @@ function SingleEpisodePage() {
   month = month < 10 ? (month = `0${month}`) : month;
   let year = date.getFullYear();
 
-  if (episode) {
-    return (
-      <section className="section"  >
-        <h3> Название Эпизода: {name} </h3>
-        <div> Сезон: {+`${episode.slice(1, 3)}`} </div>
-        <div> Серия: {+`${episode.slice(4, 6)}`} </div>
-        <div> Премьера: {`${day}.${month}.${year}`} </div>
-      </section>
-    )
-  }
 
-  return <section className="section">
-  </section>
+  return (
+    <section className="section ">
+      <div className=" single_story">
+        <h3>   {name} </h3>
+        <div> Сезон: {+`${episode?.slice(1, 3)}`} </div>
+        <div> Серия: {+`${episode?.slice(4, 6)}`} </div>
+        <div> Премьера: {`${day}.${month}.${year}`} </div>
+      </div>
+
+      <div className="container"  >
+        {
+          chars?.map((item) => {
+            const { id: idd, name, status, species, gender, image, origin, location } = item;
+            return (
+              <div className="col-6 col-md-3" key={idd} >
+                <div className="CharacterCard__image" style={{ backgroundImage: `url(${image})` }}> </div>
+                <div className="CharacterCard__description">
+                  <div> Name: {name} </div>
+                  <div> Gender: {gender} </div>
+                  <div> Species: {species}</div>
+                  <div> Status: {status}</div>
+                  <div  > Origin: {origin.name}</div>
+                  <div> Location: {location.name}</div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+  )
 
 
 

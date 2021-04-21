@@ -4,6 +4,7 @@ import SearchForm from "../Components/SearchForm"
 import Stories from "../Components/Stories"
 import Buttons from "../Components/Buttons"
 
+
 const HomePage = () => {
   // console.log("HomePage")
   return (
